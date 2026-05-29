@@ -103,32 +103,24 @@ body::after {
 /* ----------------------------- Sticky wishlist bar --------------------- */
 .wishbar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
-  display: flex; align-items: center; justify-content: center; gap: 1.2rem;
-  padding: 0.7rem var(--gutter);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.05rem var(--gutter);
   background: rgba(8, 8, 9, 0.86); backdrop-filter: blur(10px);
   border-top: 1px solid rgba(242,180,65,0.25);
   transform: translateY(100%); transition: transform 0.35s ease;
 }
 .wishbar.is-visible { transform: translateY(0); }
 .wishbar[hidden] { display: none; }
-.wishbar__text {
-  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
-  letter-spacing: 1.5px; font-size: 0.95rem; color: var(--ink);
-}
 .wishbar__btn {
-  display: inline-flex; align-items: center; gap: 0.5em;
+  display: inline-flex; align-items: center; gap: 0.55em;
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.6px; font-size: 0.95rem;
-  padding: 0.6em 1.3em; border-radius: 10px;
+  letter-spacing: 0.6px; font-size: 1.4rem;
+  padding: 0.7em 2em; border-radius: 12px;
   background: linear-gradient(135deg, var(--thief-2), #e09a1f); color: #1a1206;
   transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 .wishbar__btn:hover { transform: translateY(-2px); box-shadow: var(--glow-thief); filter: brightness(1.06); }
 .wishbar__steam { width: 1.1em; height: 1.1em; }
-@media (max-width: 560px) {
-  .wishbar__text { display: none; }
-  .wishbar { padding: 0.6rem var(--gutter); }
-}
 
 /* ----------------------------- Hero ------------------------------------ */
 /* Centered, single-column: identity (logo + tagline) → the game (video) →
@@ -193,17 +185,34 @@ body::after {
 .strip {
   max-width: var(--maxw); margin: 0 auto;
   padding: clamp(1rem, 3vw, 2rem) var(--gutter) clamp(2rem, 5vw, 4rem);
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  display: grid; grid-template-columns: 1fr; gap: 1rem;
 }
 .shot {
-  padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
-  cursor: pointer; background: var(--bg-3); aspect-ratio: 16/9;
+  position: relative;
+  padding: 0; border: none; border-radius: var(--radius); overflow: hidden;
+  cursor: pointer; background: var(--bg-3); aspect-ratio: 16/9; width: 100%;
 }
-.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease, opacity 0.3s ease; }
-.shot:hover img { transform: scale(1.06); opacity: 0.85; }
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.shot:hover img { transform: scale(1.04); }
 
-@media (max-width: 760px) { .strip { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 460px) { .strip { grid-template-columns: 1fr; } }
+/* PSX-style fade: the dark page background bleeds into the image edges, with a
+   pixelated dither so it reads as retro low-res rather than a clean gradient. */
+.shot__fade {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(120% 130% at 50% 38%, transparent 52%, rgba(8,8,9,0.55) 80%, var(--bg) 100%),
+    linear-gradient(0deg, var(--bg) 0%, transparent 22%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0 1px, transparent 1px 3px);
+  mix-blend-mode: multiply;
+}
+/* coarse dither dots that thicken toward the edges, eating into the image */
+.shot__fade::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(8,8,9,0.9) 38%, transparent 39%);
+  background-size: 4px 4px;
+  -webkit-mask-image: radial-gradient(120% 120% at 50% 45%, transparent 55%, #000 95%);
+          mask-image: radial-gradient(120% 120% at 50% 45%, transparent 55%, #000 95%);
+}
 
 /* ----------------------------- CTA ------------------------------------- */
 .cta {
@@ -231,7 +240,7 @@ body::after {
 /* ----------------------------- Footer ---------------------------------- */
 .footer {
   text-align: center; padding: 2.5rem var(--gutter);
-  border-top: 1px solid var(--line); background: transparent;
+  background: transparent;
 }
 .footer__links {
   display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1rem;
