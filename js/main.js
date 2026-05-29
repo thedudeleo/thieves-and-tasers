@@ -20,6 +20,7 @@ const CONFIG = {
 document.addEventListener("DOMContentLoaded", () => {
   wireLinks();
   wireLightbox();
+  wireWishbar();
   wireReveal();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });
@@ -66,6 +67,21 @@ function wireLightbox() {
     if (e.key === "ArrowLeft") show(idx - 1);
     if (e.key === "ArrowRight") show(idx + 1);
   });
+}
+
+/* Sticky wishlist bar — reveals once the hero scrolls out of view --------- */
+function wireWishbar() {
+  const bar = document.getElementById("wishbar");
+  const hero = document.querySelector(".hero");
+  if (!bar || !hero) return;
+  bar.hidden = false;
+
+  if (!("IntersectionObserver" in window)) { bar.classList.add("is-visible"); return; }
+  const io = new IntersectionObserver(
+    ([e]) => bar.classList.toggle("is-visible", !e.isIntersecting),
+    { threshold: 0, rootMargin: "0px" }
+  );
+  io.observe(hero);
 }
 
 /* Reveal-on-scroll ------------------------------------------------------ */
