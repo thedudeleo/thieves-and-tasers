@@ -189,15 +189,11 @@ body::after {
 }
 .channel {
   display: flex; align-items: center; justify-content: center;
-  aspect-ratio: 1; border-radius: 14px;
-  border: 1px solid var(--line); background: rgba(255,255,255,0.03);
-  color: var(--ink-soft);
-  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  aspect-ratio: 1; color: var(--ink-soft);
+  transition: color 0.2s ease;
 }
-.channel svg { width: 46%; height: 46%; transition: transform 0.2s ease; }
-.channel:hover {
-  color: var(--thief-2); border-color: rgba(242,180,65,0.5); background: rgba(242,180,65,0.08);
-}
+.channel svg { width: 60%; height: 60%; transition: transform 0.2s ease; }
+.channel:hover { color: var(--thief-2); }
 .channel:hover svg { transform: scale(1.18); }
 
 @media (max-width: 460px) { .channels { max-width: 260px; grid-template-columns: repeat(2, 1fr); } }
