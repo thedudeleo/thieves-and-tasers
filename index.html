@@ -4,22 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Thieves and Tasers — 2v3 Heist Game</title>
-  <meta name="description" content="Sneak, steal, get tased. Thieves and Tasers is a 2v3 heist game. Two thieves climb in and grab the loot; three guards hunt them with cameras, traps, and tasers. Wishlist now on Steam." />
+  <title>Thieves and Tasers — Heist Game</title>
+  <meta name="description" content="Sneak, steal, get tased. Thieves climb in and grab the loot; guards hunt them with cameras, traps, and tasers. Wishlist now on Steam." />
   <meta name="theme-color" content="#080809" />
   <link rel="canonical" href="https://thievesandtasers.com/" />
 
-  <!-- Open Graph / social share -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Thieves and Tasers — 2v3 Heist Game" />
-  <meta property="og:description" content="Sneak, steal, get tased. A 2v3 heist game to play with friends. Wishlist now on Steam." />
+  <meta property="og:title" content="Thieves and Tasers — Heist Game" />
+  <meta property="og:description" content="Sneak, steal, get tased. A heist game to play with friends. Wishlist now on Steam." />
   <meta property="og:url" content="https://thievesandtasers.com/" />
   <meta property="og:image" content="https://thievesandtasers.com/assets/og-image.jpg" />
   <meta property="og:site_name" content="Thieves and Tasers" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Thieves and Tasers — 2v3 Heist Game" />
-  <meta name="twitter:description" content="Sneak, steal, get tased. A 2v3 heist game to play with friends. Wishlist now on Steam." />
+  <meta name="twitter:title" content="Thieves and Tasers — Heist Game" />
+  <meta name="twitter:description" content="Sneak, steal, get tased. A heist game to play with friends. Wishlist now on Steam." />
   <meta name="twitter:image" content="https://thievesandtasers.com/assets/og-image.jpg" />
 
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
@@ -35,8 +34,8 @@
     "@context": "https://schema.org",
     "@type": "VideoGame",
     "name": "Thieves and Tasers",
-    "description": "A 2v3 heist game. Thieves climb, sneak, and steal loot while guards hunt them with cameras, traps, and tasers.",
-    "genre": ["Action", "Heist", "PvP"],
+    "description": "A heist game. Thieves climb, sneak, and steal loot while guards hunt them with cameras, traps, and tasers.",
+    "genre": ["Action", "Heist"],
     "gamePlatform": ["PC", "Windows"],
     "publisher": { "@type": "Organization", "name": "Arctic Palm Games" },
     "url": "https://thievesandtasers.com/"
@@ -45,27 +44,16 @@
 </head>
 
 <body>
-  <!-- ===================== NAV ===================== -->
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#top" class="nav__brand" aria-label="Thieves and Tasers">
-        <img src="assets/logo.png" alt="Thieves and Tasers" class="nav__logo" />
-      </a>
-    </div>
-  </header>
-
-  <main id="top">
+  <main>
     <!-- ===================== HERO ===================== -->
     <section class="hero">
-      <div class="hero__inner">
+      <div class="hero__left">
         <img src="assets/logo.png" alt="Thieves and Tasers" class="hero__logo" />
         <p class="hero__tagline">Sneak, steal, get tased.</p>
         <p class="hero__sub">
-          A 2v3 heist game. Two thieves climb in, grab the loot, and slip out — three guards
-          hunt them down with cameras, traps, and tasers. Best played loud, with friends.
+          Thieves climb in and grab the loot. Guards hunt them with cameras, traps, and tasers.
+          Best played loud, with friends.
         </p>
-
-        <!-- Steam wishlist widget — add-to-wishlist works right here, inline. -->
         <div class="steam-widget">
           <iframe src="https://store.steampowered.com/widget/4536600/"
                   frameborder="0" width="646" height="190"
@@ -73,7 +61,6 @@
         </div>
       </div>
 
-      <!-- Looping gameplay clip — immediate visual. Swap assets/video/gameplay.mp4 for real footage. -->
       <figure class="hero__media">
         <video autoplay loop muted playsinline preload="metadata"
                poster="https://img.youtube.com/vi/D6io5XZWBHk/maxresdefault.jpg">
@@ -82,145 +69,65 @@
       </figure>
     </section>
 
-    <!-- ===================== SCREENSHOTS ===================== -->
-    <section class="section gallery">
-      <div class="gallery__grid" id="shots">
-        <button class="shot" data-shot><img src="assets/screenshots/shot-1.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-2.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-3.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-4.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-5.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-6.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-7.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-8.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
-      </div>
-    </section>
-
-    <!-- ===================== TRAILER ===================== -->
-    <section class="section trailer" id="trailer">
-      <div class="trailer__frame" data-open-trailer>
-        <img src="https://img.youtube.com/vi/D6io5XZWBHk/maxresdefault.jpg" alt="Watch the Thieves and Tasers trailer" class="trailer__poster" />
-        <span class="trailer__play" aria-hidden="true">▶</span>
-      </div>
-    </section>
-
-    <!-- ===================== TWO SIDES ===================== -->
-    <section class="section factions">
-      <div class="section__head">
-        <h2 class="section__title">Two sides. One heist.</h2>
-        <p class="section__lead">
-          Every match splits five players into two crews with opposite goals. Pick a side — or play both.
-        </p>
-      </div>
-
-      <div class="factions__grid">
-        <article class="faction">
-          <div class="faction__tag">2 Players</div>
-          <h3 class="faction__name">The Thieves</h3>
-          <p class="faction__desc">
-            Climb walls, vault rooftops, and stay in the shadows. Grab the treasure and reach the
-            extraction point before the clock — or the guards — catch up.
-          </p>
-          <ul class="faction__list">
-            <li>Parkour through the level</li>
-            <li>Avoid cameras &amp; laser traps</li>
-            <li>Grab loot, race to extraction</li>
-            <li>Free a cuffed teammate for the clutch</li>
-          </ul>
-        </article>
-
-        <div class="factions__vs" aria-hidden="true">VS</div>
-
-        <article class="faction">
-          <div class="faction__tag">3 Players</div>
-          <h3 class="faction__name">The Guards</h3>
-          <p class="faction__desc">
-            Lock the place down. Watch the cameras, set your traps, and zap thieves on sight. Cuff
-            them before they slip away with the goods.
-          </p>
-          <ul class="faction__list">
-            <li>Monitor security cameras</li>
-            <li>Deploy laser traps</li>
-            <li>Stun with your taser</li>
-            <li>Handcuff downed thieves</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===================== COMMUNITY / EMAIL ===================== -->
-    <section class="section community">
-      <div class="community__grid">
-        <div class="community__card community__card--discord">
-          <h3>Join the crew</h3>
-          <p>Hang out in our Discord — playtest invites, dev updates, and people to actually heist with.</p>
-          <a class="btn btn--discord" data-discord href="#" target="_blank" rel="noopener">Join the Discord</a>
+    <!-- ===================== ALTERNATING ROWS ===================== -->
+    <section class="rows">
+      <!-- Thieves: image left, text right -->
+      <article class="row">
+        <button class="row__media" data-shot><img src="assets/screenshots/shot-1.jpg" alt="A thief reaching glowing loot" loading="lazy" /></button>
+        <div class="row__text">
+          <h2>The Thieves</h2>
+          <p>Climb walls, vault rooftops, and stay in the shadows. Grab the treasure and slip out before the guards catch up.</p>
         </div>
+      </article>
 
-        <div class="community__card community__card--email">
-          <h3>Get launch news</h3>
-          <p>Drop your email for the big beats: playtests, Early Access, and release day.</p>
-          <form class="email-form" data-email-form method="post" novalidate>
-            <label class="sr-only" for="email">Email address</label>
-            <input id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
-            <button type="submit" class="btn btn--wishlist">Notify me</button>
-          </form>
-          <p class="email-form__status" data-email-status role="status" aria-live="polite"></p>
-          <p class="email-form__note">No spam. Unsubscribe anytime.</p>
+      <!-- Guards: text left, image right -->
+      <article class="row row--reverse">
+        <button class="row__media" data-shot><img src="assets/screenshots/shot-2.jpg" alt="A guard with a taser" loading="lazy" /></button>
+        <div class="row__text">
+          <h2>The Guards</h2>
+          <p>Lock the place down. Watch the cameras, set your traps, and zap thieves on sight — then cuff them before they get away with the goods.</p>
         </div>
-      </div>
+      </article>
+
+      <!-- Friends: image left, text right -->
+      <article class="row">
+        <button class="row__media" data-shot><img src="assets/screenshots/shot-6.jpg" alt="Players sneaking through a mansion" loading="lazy" /></button>
+        <div class="row__text">
+          <h2>Two sides. One heist.</h2>
+          <p>Every match splits your group into two crews with opposite goals. Pick a side, talk trash, betray someone — then run it back.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===================== SCREENSHOT STRIP ===================== -->
+    <section class="strip">
+      <button class="shot" data-shot><img src="assets/screenshots/shot-3.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+      <button class="shot" data-shot><img src="assets/screenshots/shot-4.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+      <button class="shot" data-shot><img src="assets/screenshots/shot-5.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+      <button class="shot" data-shot><img src="assets/screenshots/shot-7.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+      <button class="shot" data-shot><img src="assets/screenshots/shot-8.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+      <button class="shot" data-shot><img src="assets/screenshots/shot-1.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
     </section>
 
     <!-- ===================== WISHLIST CTA ===================== -->
-    <section class="section cta-banner">
-      <div class="cta-banner__inner">
-        <h2 class="cta-banner__title">Be there on day one.</h2>
-        <p class="cta-banner__sub">
-          Wishlisting is the single biggest way you can help an indie game launch.
-        </p>
-        <a class="btn btn--wishlist btn--lg" data-wishlist href="#" target="_blank" rel="noopener">
-          <span class="btn__icon" aria-hidden="true">+</span> Wishlist on Steam
-        </a>
-      </div>
+    <section class="cta">
+      <h2 class="cta__title">Be there on day one.</h2>
+      <a class="btn btn--wishlist btn--lg" data-wishlist href="#" target="_blank" rel="noopener">
+        <span class="btn__icon" aria-hidden="true">+</span> Wishlist on Steam
+      </a>
     </section>
   </main>
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <span class="footer__logo">THIEVES &amp; TASERS</span>
-        <p class="footer__by">by Arctic Palm Games</p>
-      </div>
-
-      <nav class="footer__col" aria-label="Links">
-        <h4>Game</h4>
-        <a data-wishlist href="#" target="_blank" rel="noopener">Wishlist on Steam</a>
-        <a data-discord href="#" target="_blank" rel="noopener">Discord</a>
-        <a href="press/">Press Kit</a>
-      </nav>
-
-      <nav class="footer__col" aria-label="Social">
-        <h4>Social</h4>
-        <a data-social="twitter" href="#" target="_blank" rel="noopener">Twitter / X</a>
-        <a data-social="tiktok" href="#" target="_blank" rel="noopener">TikTok</a>
-        <a data-social="youtube" href="#" target="_blank" rel="noopener">YouTube</a>
-      </nav>
+    <div class="footer__links">
+      <a data-wishlist href="#" target="_blank" rel="noopener">Wishlist on Steam</a>
+      <a data-discord href="#" target="_blank" rel="noopener">Join Discord</a>
+      <a data-social="twitter" href="#" target="_blank" rel="noopener">Twitter / X</a>
+      <a href="press/">Press Kit</a>
     </div>
-
-    <div class="footer__bar">
-      <p>© <span data-year>2026</span> Arctic Palm Games. All rights reserved.</p>
-    </div>
+    <p class="footer__by">© <span data-year>2026</span> Arctic Palm Games</p>
   </footer>
-
-  <!-- ===================== TRAILER MODAL ===================== -->
-  <div class="modal" id="trailerModal" hidden>
-    <div class="modal__backdrop" data-close-trailer></div>
-    <div class="modal__body" role="dialog" aria-modal="true" aria-label="Game trailer">
-      <button class="modal__close" data-close-trailer aria-label="Close trailer">✕</button>
-      <div class="modal__video" id="trailerMount"><!-- iframe injected by JS --></div>
-    </div>
-  </div>
 
   <!-- ===================== LIGHTBOX ===================== -->
   <div class="lightbox" id="lightbox" hidden>
