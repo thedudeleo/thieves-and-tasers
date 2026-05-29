@@ -47,7 +47,14 @@
   <main>
     <!-- ===================== HERO ===================== -->
     <section class="hero">
-      <img src="assets/logo.png" alt="Thieves and Tasers" class="hero__logo" />
+      <div class="hero__top">
+        <img src="assets/logo.png" alt="Thieves and Tasers" class="hero__logo" />
+        <div class="steam-widget">
+          <iframe src="https://store.steampowered.com/widget/4536600/"
+                  frameborder="0" width="646" height="190"
+                  title="Thieves and Tasers on Steam" loading="lazy"></iframe>
+        </div>
+      </div>
 
       <figure class="hero__media">
         <video autoplay loop muted playsinline preload="metadata"
@@ -57,12 +64,6 @@
       </figure>
 
       <p class="hero__tagline">Sneak, steal, get tased.</p>
-
-      <div class="steam-widget">
-        <iframe src="https://store.steampowered.com/widget/4536600/"
-                frameborder="0" width="646" height="190"
-                title="Thieves and Tasers on Steam" loading="lazy"></iframe>
-      </div>
     </section>
 
     <!-- ===================== ALTERNATING ROWS ===================== -->
@@ -103,6 +104,13 @@
                 frameborder="0" width="646" height="190"
                 title="Thieves and Tasers on Steam" loading="lazy"></iframe>
       </div>
+
+      <div class="channels">
+        <a class="channel" data-channel="discord" href="#" target="_blank" rel="noopener">Discord</a>
+        <a class="channel" data-channel="instagram" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a class="channel" data-channel="tiktok" href="#" target="_blank" rel="noopener">TikTok</a>
+        <a class="channel" data-channel="youtube" href="#" target="_blank" rel="noopener">YouTube</a>
+      </div>
     </section>
 
     <!-- ===================== SCREENSHOT STRIP ===================== -->
@@ -119,9 +127,6 @@
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="footer__links">
-      <a data-wishlist href="#" target="_blank" rel="noopener">Wishlist on Steam</a>
-      <a data-discord href="#" target="_blank" rel="noopener">Join Discord</a>
-      <a data-social="twitter" href="#" target="_blank" rel="noopener">Twitter / X</a>
       <a href="press/">Press Kit</a>
     </div>
     <p class="footer__by">© <span data-year>2026</span> Arctic Palm Games</p>

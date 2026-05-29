@@ -7,14 +7,13 @@ const CONFIG = {
   // Steam store page (the Wishlist button links here).
   steamUrl: "https://store.steampowered.com/app/4536600/Thieves_and_Tasers/",
 
-  // Discord invite link
-  discordUrl: "https://discord.gg/ZE6P7HJK",
-
-  // Social profiles — leave blank ("") or "REPLACE_ME" to hide that link
-  social: {
-    twitter: "https://twitter.com/REPLACE_ME",
-    tiktok:  "https://tiktok.com/@REPLACE_ME",
-    youtube: "https://youtube.com/@REPLACE_ME",
+  // Community channels — paste real URLs when you have them.
+  // Discord is live; the others stay visible (link to "#") until you fill them in.
+  channels: {
+    discord:   "https://discord.gg/ZE6P7HJK",
+    instagram: "",
+    tiktok:    "",
+    youtube:   "",
   },
 };
 
@@ -29,16 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
 function wireLinks() {
   document.querySelectorAll("[data-wishlist]").forEach((a) => (a.href = CONFIG.steamUrl));
 
-  document.querySelectorAll("[data-discord]").forEach((a) => {
-    if (CONFIG.discordUrl && !CONFIG.discordUrl.includes("REPLACE_ME")) a.href = CONFIG.discordUrl;
-    else a.remove();
-  });
-
-  document.querySelectorAll("[data-social]").forEach((a) => {
-    const key = a.getAttribute("data-social");
-    const url = CONFIG.social[key];
-    if (url && !url.includes("REPLACE_ME")) a.href = url;
-    else a.remove();
+  // Community channel buttons stay visible even before a URL is set, so the
+  // four-up layout never breaks. An empty/placeholder URL just disables the link.
+  document.querySelectorAll("[data-channel]").forEach((a) => {
+    const url = CONFIG.channels[a.getAttribute("data-channel")];
+    if (url && !url.includes("REPLACE_ME")) {
+      a.href = url;
+    } else {
+      a.removeAttribute("href");
+      a.setAttribute("aria-disabled", "true");
+      a.title = "Coming soon";
+    }
   });
 }
 
