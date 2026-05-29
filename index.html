@@ -4,43 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Thieves and Tasers — 2v3 Heist Party Game</title>
-  <meta name="description" content="Sneak, steal, get tased. Thieves and Tasers is a fast-paced 2v3 asymmetrical PvP heist game. Climb, loot, and escape — or hunt thieves down with cameras, traps, and tasers. Wishlist now on Steam." />
-  <meta name="theme-color" content="#0a0c10" />
+  <title>Thieves and Tasers — 2v3 Heist Game</title>
+  <meta name="description" content="Sneak, steal, get tased. Thieves and Tasers is a 2v3 heist game. Two thieves climb in and grab the loot; three guards hunt them with cameras, traps, and tasers. Wishlist now on Steam." />
+  <meta name="theme-color" content="#080809" />
   <link rel="canonical" href="https://thievesandtasers.com/" />
 
   <!-- Open Graph / social share -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Thieves and Tasers — 2v3 Heist Party Game" />
-  <meta property="og:description" content="Sneak, steal, get tased. A fast-paced 2v3 asymmetrical PvP heist game to play with friends. Wishlist now on Steam." />
+  <meta property="og:title" content="Thieves and Tasers — 2v3 Heist Game" />
+  <meta property="og:description" content="Sneak, steal, get tased. A 2v3 heist game to play with friends. Wishlist now on Steam." />
   <meta property="og:url" content="https://thievesandtasers.com/" />
   <meta property="og:image" content="https://thievesandtasers.com/assets/og-image.jpg" />
   <meta property="og:site_name" content="Thieves and Tasers" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Thieves and Tasers — 2v3 Heist Party Game" />
-  <meta name="twitter:description" content="Sneak, steal, get tased. A fast-paced 2v3 asymmetrical PvP heist game to play with friends. Wishlist now on Steam." />
+  <meta name="twitter:title" content="Thieves and Tasers — 2v3 Heist Game" />
+  <meta name="twitter:description" content="Sneak, steal, get tased. A 2v3 heist game to play with friends. Wishlist now on Steam." />
   <meta name="twitter:image" content="https://thievesandtasers.com/assets/og-image.jpg" />
 
-  <!-- Favicon (drop a favicon.ico / icon files into assets/) -->
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
-  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
 
-  <!-- Fonts: a sharp display face + clean body. Swap if you have brand fonts. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- JSON-LD structured data for the game -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "VideoGame",
     "name": "Thieves and Tasers",
-    "description": "A fast-paced 2v3 asymmetrical PvP heist game. Thieves climb, sneak, and steal loot while Guards hunt them with cameras, traps, and tasers.",
-    "genre": ["Action", "Heist", "PvP", "Party Game"],
+    "description": "A 2v3 heist game. Thieves climb, sneak, and steal loot while guards hunt them with cameras, traps, and tasers.",
+    "genre": ["Action", "Heist", "PvP"],
     "gamePlatform": ["PC", "Windows"],
     "publisher": { "@type": "Organization", "name": "Arctic Palm Games" },
     "url": "https://thievesandtasers.com/"
@@ -52,80 +48,62 @@
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#top" class="nav__brand" aria-label="Thieves and Tasers home">
+      <a href="#top" class="nav__brand" aria-label="Thieves and Tasers">
         <img src="assets/logo.jpg" alt="Thieves and Tasers" class="nav__logo" />
-      </a>
-
-      <nav class="nav__links" aria-label="Primary">
-        <a href="#factions">The Heist</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#community">Community</a>
-      </nav>
-
-      <a class="btn btn--wishlist nav__cta" data-wishlist href="#" target="_blank" rel="noopener">
-        <span class="btn__icon" aria-hidden="true">+</span> Wishlist on Steam
       </a>
     </div>
   </header>
 
   <main id="top">
     <!-- ===================== HERO ===================== -->
-    <section class="hero" id="hero">
-      <div class="hero__bg" aria-hidden="true">
-        <!-- Drop a key-art / screenshot still here as the hero background -->
-        <img src="assets/hero-keyart.jpg" alt="" class="hero__img" />
-        <div class="hero__scrim"></div>
-        <div class="hero__grid"></div>
-      </div>
-
-      <div class="hero__content">
-        <p class="hero__eyebrow">Arctic Palm Games presents</p>
-        <h1 class="hero__title">
-          <img src="assets/logo.jpg" alt="Thieves and Tasers" class="hero__logo" />
-        </h1>
+    <section class="hero">
+      <div class="hero__inner">
+        <img src="assets/logo.jpg" alt="Thieves and Tasers" class="hero__logo" />
         <p class="hero__tagline">Sneak, steal, get tased.</p>
         <p class="hero__sub">
-          A fast-paced <strong>2v3 asymmetrical PvP heist</strong> game. Climb in, grab the loot,
-          and slip out — or hunt the thieves down with cameras, traps, and a well-aimed taser.
-          Best played loud, with friends.
+          A 2v3 heist game. Two thieves climb in, grab the loot, and slip out — three guards
+          hunt them down with cameras, traps, and tasers. Best played loud, with friends.
         </p>
 
-        <div class="hero__actions">
-          <a class="btn btn--wishlist btn--lg" data-wishlist href="#" target="_blank" rel="noopener">
-            <span class="btn__icon" aria-hidden="true">+</span> Wishlist on Steam
-          </a>
-          <button class="btn btn--ghost btn--lg" data-open-trailer>
-            <span class="btn__icon" aria-hidden="true">▶</span> Watch Trailer
-          </button>
+        <!-- Steam wishlist widget — add-to-wishlist works right here, inline. -->
+        <div class="steam-widget">
+          <iframe src="https://store.steampowered.com/widget/4536600/"
+                  frameborder="0" width="646" height="190"
+                  title="Thieves and Tasers on Steam" loading="lazy"></iframe>
         </div>
-
-        <ul class="hero__badges">
-          <li>2v3 PvP</li>
-          <li>Online &amp; LAN</li>
-          <li>Early Access — Q4 2026</li>
-        </ul>
       </div>
 
-      <a href="#trailer" class="hero__scroll" aria-label="Scroll down">▼</a>
+      <!-- Looping gameplay clip — immediate visual. Swap assets/video/gameplay.mp4 for real footage. -->
+      <figure class="hero__media">
+        <video autoplay loop muted playsinline preload="metadata"
+               poster="https://img.youtube.com/vi/D6io5XZWBHk/maxresdefault.jpg">
+          <source src="assets/video/gameplay.mp4" type="video/mp4" />
+        </video>
+      </figure>
+    </section>
+
+    <!-- ===================== SCREENSHOTS ===================== -->
+    <section class="section gallery">
+      <div class="gallery__grid" id="shots">
+        <button class="shot" data-shot><img src="assets/screenshots/shot-1.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+        <button class="shot" data-shot><img src="assets/screenshots/shot-2.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+        <button class="shot" data-shot><img src="assets/screenshots/shot-3.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+        <button class="shot" data-shot><img src="assets/screenshots/shot-4.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+        <button class="shot" data-shot><img src="assets/screenshots/shot-5.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+        <button class="shot" data-shot><img src="assets/screenshots/shot-6.jpg" alt="Gameplay screenshot" loading="lazy" /></button>
+      </div>
     </section>
 
     <!-- ===================== TRAILER ===================== -->
     <section class="section trailer" id="trailer">
-      <div class="section__head">
-        <h2 class="section__title">See it in action</h2>
-        <p class="section__lead">Twenty seconds of chaos is worth a thousand words.</p>
-      </div>
-
       <div class="trailer__frame" data-open-trailer>
-        <!-- Poster still; clicking opens the embedded YouTube trailer in a modal.
-             Defaults to the YouTube thumbnail; drop assets/trailer-poster.jpg to override. -->
         <img src="https://img.youtube.com/vi/D6io5XZWBHk/maxresdefault.jpg" alt="Watch the Thieves and Tasers trailer" class="trailer__poster" />
         <span class="trailer__play" aria-hidden="true">▶</span>
       </div>
     </section>
 
-    <!-- ===================== FACTIONS / THE HEIST ===================== -->
-    <section class="section factions" id="factions">
+    <!-- ===================== TWO SIDES ===================== -->
+    <section class="section factions">
       <div class="section__head">
         <h2 class="section__title">Two sides. One heist.</h2>
         <p class="section__lead">
@@ -134,7 +112,7 @@
       </div>
 
       <div class="factions__grid">
-        <article class="faction faction--thief">
+        <article class="faction">
           <div class="faction__tag">2 Players</div>
           <h3 class="faction__name">The Thieves</h3>
           <p class="faction__desc">
@@ -151,7 +129,7 @@
 
         <div class="factions__vs" aria-hidden="true">VS</div>
 
-        <article class="faction faction--guard">
+        <article class="faction">
           <div class="faction__tag">3 Players</div>
           <h3 class="faction__name">The Guards</h3>
           <p class="faction__desc">
@@ -168,59 +146,8 @@
       </div>
     </section>
 
-    <!-- ===================== GALLERY ===================== -->
-    <section class="section gallery" id="gallery">
-      <div class="section__head">
-        <h2 class="section__title">Gallery</h2>
-      </div>
-
-      <!-- Looping muted gameplay clip used as a lightweight "GIF" (a video is far
-           smaller than a real GIF). Swap assets/video/gameplay.mp4 for real footage. -->
-      <figure class="clip">
-        <video class="clip__video" autoplay loop muted playsinline preload="metadata"
-               poster="https://img.youtube.com/vi/D6io5XZWBHk/maxresdefault.jpg">
-          <source src="assets/video/gameplay.mp4" type="video/mp4" />
-        </video>
-      </figure>
-
-      <!-- Screenshot grid (click to open lightbox) -->
-      <div class="gallery__grid" id="shots">
-        <button class="shot" data-shot><img src="assets/screenshots/shot-1.jpg" alt="Gameplay screenshot 1" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-2.jpg" alt="Gameplay screenshot 2" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-3.jpg" alt="Gameplay screenshot 3" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-4.jpg" alt="Gameplay screenshot 4" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-5.jpg" alt="Gameplay screenshot 5" loading="lazy" /></button>
-        <button class="shot" data-shot><img src="assets/screenshots/shot-6.jpg" alt="Gameplay screenshot 6" loading="lazy" /></button>
-      </div>
-    </section>
-
-    <!-- ===================== WISHLIST CTA BANNER ===================== -->
-    <section class="section cta-banner">
-      <div class="cta-banner__inner">
-        <h2 class="cta-banner__title">Be there on day one.</h2>
-        <p class="cta-banner__sub">
-          Wishlisting tells us you're in — and it's the single biggest way you can help an indie game launch.
-        </p>
-
-        <!-- Official Steam wishlist widget (add-to-wishlist works inline) -->
-        <div class="steam-widget">
-          <iframe
-            src="https://store.steampowered.com/widget/4536600/"
-            frameborder="0"
-            width="646"
-            height="190"
-            title="Thieves and Tasers on Steam"
-            loading="lazy"></iframe>
-        </div>
-
-        <a class="btn btn--wishlist btn--lg" data-wishlist href="#" target="_blank" rel="noopener">
-          <span class="btn__icon" aria-hidden="true">+</span> Wishlist on Steam
-        </a>
-      </div>
-    </section>
-
     <!-- ===================== COMMUNITY / EMAIL ===================== -->
-    <section class="section community" id="community">
+    <section class="section community">
       <div class="community__grid">
         <div class="community__card community__card--discord">
           <h3>Join the crew</h3>
@@ -231,8 +158,6 @@
         <div class="community__card community__card--email">
           <h3>Get launch news</h3>
           <p>Drop your email for the big beats: playtests, Early Access, and release day.</p>
-          <!-- Static hosting can't process forms server-side. Point action= at your provider
-               (Mailchimp/Buttondown/ConvertKit/Formspree). See README. -->
           <form class="email-form" data-email-form method="post" novalidate>
             <label class="sr-only" for="email">Email address</label>
             <input id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
@@ -241,6 +166,19 @@
           <p class="email-form__status" data-email-status role="status" aria-live="polite"></p>
           <p class="email-form__note">No spam. Unsubscribe anytime.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== WISHLIST CTA ===================== -->
+    <section class="section cta-banner">
+      <div class="cta-banner__inner">
+        <h2 class="cta-banner__title">Be there on day one.</h2>
+        <p class="cta-banner__sub">
+          Wishlisting is the single biggest way you can help an indie game launch.
+        </p>
+        <a class="btn btn--wishlist btn--lg" data-wishlist href="#" target="_blank" rel="noopener">
+          <span class="btn__icon" aria-hidden="true">+</span> Wishlist on Steam
+        </a>
       </div>
     </section>
   </main>
@@ -253,31 +191,23 @@
         <p class="footer__by">by Arctic Palm Games</p>
       </div>
 
-      <nav class="footer__col" aria-label="Game">
+      <nav class="footer__col" aria-label="Links">
         <h4>Game</h4>
         <a data-wishlist href="#" target="_blank" rel="noopener">Wishlist on Steam</a>
-        <a href="#factions">The Heist</a>
-        <a href="#gallery">Gallery</a>
+        <a data-discord href="#" target="_blank" rel="noopener">Discord</a>
+        <a href="press/">Press Kit</a>
       </nav>
 
-      <nav class="footer__col" aria-label="Community">
-        <h4>Community</h4>
-        <a data-discord href="#" target="_blank" rel="noopener">Discord</a>
+      <nav class="footer__col" aria-label="Social">
+        <h4>Social</h4>
         <a data-social="twitter" href="#" target="_blank" rel="noopener">Twitter / X</a>
         <a data-social="tiktok" href="#" target="_blank" rel="noopener">TikTok</a>
         <a data-social="youtube" href="#" target="_blank" rel="noopener">YouTube</a>
-      </nav>
-
-      <nav class="footer__col" aria-label="Press">
-        <h4>Press</h4>
-        <a href="press/" >Press Kit</a>
-        <a href="mailto:press@thievesandtasers.com">press@thievesandtasers.com</a>
       </nav>
     </div>
 
     <div class="footer__bar">
       <p>© <span data-year>2026</span> Arctic Palm Games. All rights reserved.</p>
-      <p class="footer__legal">Trademarks are property of their respective owners.</p>
     </div>
   </footer>
 

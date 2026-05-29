@@ -147,63 +147,32 @@ body::after {
 
 /* ----------------------------- Hero ------------------------------------ */
 .hero {
-  position: relative; min-height: 100svh; display: flex; align-items: center;
-  padding: calc(var(--nav-h) + 2rem) var(--gutter) 4rem;
-  overflow: hidden;
+  padding: calc(var(--nav-h) + 2.5rem) var(--gutter) 0;
+  text-align: center;
 }
-.hero__bg { position: absolute; inset: 0; z-index: 0; }
-.hero__img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
-.hero__scrim {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(100% 70% at 60% 30%, rgba(242,180,65,0.12), transparent 55%),
-    radial-gradient(90% 70% at 5% 95%, rgba(47,120,90,0.12), transparent 50%),
-    linear-gradient(180deg, rgba(8,8,9,0.5) 0%, rgba(8,8,9,0.8) 55%, var(--bg) 100%);
-}
-.hero__grid {
-  position: absolute; inset: 0; opacity: 0.4;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(80% 60% at 50% 40%, #000 30%, transparent 80%);
-}
-.hero__content { position: relative; z-index: 2; max-width: 720px; }
-.hero__title { margin: 0; line-height: 0; }
+.hero__inner { max-width: 760px; margin: 0 auto; }
 .hero__logo {
-  width: min(560px, 82vw); height: auto; border-radius: 12px;
+  width: min(520px, 82vw); height: auto; border-radius: 12px; margin: 0 auto;
   box-shadow: 0 12px 50px rgba(0,0,0,0.6); border: 1px solid var(--line);
 }
-.hero__eyebrow {
-  text-transform: uppercase; letter-spacing: 3px; font-size: 0.78rem;
-  color: var(--thief); font-weight: 600; margin-bottom: 1rem;
-}
-.hero__title {
-  font-size: clamp(2.8rem, 9vw, 6.2rem); line-height: 0.92; letter-spacing: 2px;
-  text-shadow: 0 6px 40px rgba(0,0,0,0.6);
-}
-.hero__title .amp { color: var(--thief); }
 .hero__tagline {
   font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
-  letter-spacing: 2px; font-size: clamp(1.1rem, 3vw, 1.6rem);
-  color: var(--ink); margin: 0.7rem 0 1.1rem;
+  letter-spacing: 2px; font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--ink); margin: 1.2rem 0 0.9rem;
 }
-.hero__sub { color: var(--ink-soft); font-size: clamp(1rem, 2.2vw, 1.18rem); max-width: 620px; }
-.hero__sub strong { color: var(--ink); }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.8rem 0 1.4rem; }
-.hero__badges {
-  list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem;
+.hero__sub {
+  color: var(--ink-soft); font-size: clamp(1rem, 2.2vw, 1.15rem);
+  max-width: 600px; margin: 0 auto 1.6rem;
 }
-.hero__badges li {
-  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft);
-  border: 1px solid var(--line); border-radius: 999px; padding: 0.35em 0.9em;
-  background: rgba(255,255,255,0.03);
+.steam-widget { margin: 0 auto; max-width: 646px; }
+.steam-widget iframe { width: 100%; max-width: 646px; border-radius: 6px; display: block; }
+.hero__media {
+  margin: 2.5rem auto 0; max-width: var(--maxw);
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+  aspect-ratio: 16 / 9; background: var(--bg-3);
 }
-.hero__scroll {
-  position: absolute; bottom: 1.4rem; left: 50%; transform: translateX(-50%);
-  color: var(--ink-dim); font-size: 1.1rem; z-index: 2; animation: bob 1.8s ease-in-out infinite;
-}
-@keyframes bob { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+.hero__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ----------------------------- Sections -------------------------------- */
 .section { padding: clamp(3.5rem, 8vw, 6.5rem) var(--gutter); }
@@ -228,44 +197,30 @@ body::after {
 .trailer__frame:hover .trailer__play { transform: scale(1.08); }
 
 /* ----------------------------- Factions -------------------------------- */
-.factions { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
+.factions { background: var(--bg); }
 .factions__grid {
   max-width: var(--maxw); margin: 0 auto;
   display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.4rem; align-items: stretch;
 }
 .factions__vs {
   align-self: center; font-family: var(--font-display); font-weight: 700;
-  font-size: 2rem; color: var(--ink-dim);
+  font-size: 1.6rem; color: var(--ink-dim);
 }
 .faction {
   background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 2rem; position: relative; overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  padding: 2rem; transition: transform 0.2s ease, border-color 0.2s ease;
 }
-.faction::before {
-  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
-}
-.faction--thief::before { background: linear-gradient(90deg, var(--thief), transparent); }
-.faction--guard::before { background: linear-gradient(90deg, var(--taser), transparent); }
-.faction--thief:hover { transform: translateY(-4px); box-shadow: var(--glow-thief); border-color: rgba(242,180,65,0.4); }
-.faction--guard:hover { transform: translateY(-4px); box-shadow: var(--glow-taser); border-color: rgba(24,224,255,0.4); }
+.faction:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.18); }
 .faction__tag {
   display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px;
   padding: 0.3em 0.8em; border-radius: 999px; margin-bottom: 1rem; font-weight: 600;
+  background: rgba(255,255,255,0.06); color: var(--ink-soft);
 }
-.faction--thief .faction__tag { background: rgba(242,180,65,0.14); color: var(--thief-2); }
-.faction--guard .faction__tag { background: rgba(24,224,255,0.14); color: var(--taser-2); }
-.faction__name { font-size: 1.7rem; margin-bottom: 0.6rem; }
-.faction--thief .faction__name { color: var(--thief-2); }
-.faction--guard .faction__name { color: var(--taser-2); }
+.faction__name { font-size: 1.7rem; margin-bottom: 0.6rem; color: var(--ink); }
 .faction__desc { color: var(--ink-soft); margin-bottom: 1.2rem; }
 .faction__list { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
 .faction__list li { position: relative; padding-left: 1.6rem; color: var(--ink-soft); }
-.faction__list li::before {
-  content: "▸"; position: absolute; left: 0; top: 0;
-}
-.faction--thief .faction__list li::before { color: var(--thief); }
-.faction--guard .faction__list li::before { color: var(--taser); }
+.faction__list li::before { content: "▸"; position: absolute; left: 0; top: 0; color: var(--ink-dim); }
 
 @media (max-width: 760px) {
   .factions__grid { grid-template-columns: 1fr; }

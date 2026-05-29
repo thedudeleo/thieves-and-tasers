@@ -211,7 +211,7 @@ function wireEmailForm() {
 /* Reveal-on-scroll ------------------------------------------------------ */
 function wireReveal() {
   const targets = document.querySelectorAll(
-    ".section__head, .faction, .clip, .shot, .community__card, .cta-banner__inner"
+    ".section__head, .faction, .shot, .community__card, .cta-banner__inner"
   );
   targets.forEach((t) => t.classList.add("reveal"));
 
