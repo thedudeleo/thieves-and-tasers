@@ -51,14 +51,15 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
 }
 ::selection { background: var(--thief); color: #1a1206; }
 
-/* Warm amber "spotlight" wash behind everything — sits at the very back so
-   content reads on top of a subtle, themed glow instead of flat black. */
+/* Warm amber "spotlight" at the top + a fade that deepens all the way to the
+   bottom of the page, so the lower half glows continuously through the footer. */
 body {
   background:
     radial-gradient(90% 60% at 50% -5%, rgba(242,180,65,0.10), transparent 60%),
     radial-gradient(70% 50% at 85% 20%, rgba(47,120,90,0.06), transparent 60%),
+    linear-gradient(180deg, transparent 30%, rgba(242,180,65,0.05) 58%, rgba(242,180,65,0.16) 100%),
     var(--bg);
-  background-attachment: fixed;
+  background-attachment: fixed, fixed, scroll, scroll;
 }
 
 /* Lo-fi grain + CRT scanlines + vignette overlay (PSX flavor) */
@@ -108,13 +109,8 @@ body::after {
   display: flex; flex-direction: column; align-items: center;
   gap: clamp(1.8rem, 4vw, 2.6rem);
 }
-/* Logo + wishlist widget share a row */
-.hero__top {
-  display: flex; align-items: center; justify-content: center;
-  gap: clamp(1.5rem, 4vw, 3rem); flex-wrap: wrap; width: 100%;
-}
 .hero__logo {
-  width: min(460px, 80vw); height: auto;
+  width: min(900px, 92vw); height: auto;
   filter: drop-shadow(0 8px 30px rgba(0,0,0,0.6));
 }
 .hero__tagline {
@@ -182,34 +178,34 @@ body::after {
 /* ----------------------------- CTA ------------------------------------- */
 .cta {
   text-align: center; padding: clamp(3.5rem, 8vw, 6rem) var(--gutter);
-  /* Soft amber wash that eases in from the top — no hard edge/border */
-  background: linear-gradient(180deg, transparent 0%, rgba(242,180,65,0.04) 45%, rgba(242,180,65,0.11) 100%);
+  /* No section background — the page-wide amber fade (on body) shows through. */
 }
 .cta__title { font-size: clamp(2rem, 6vw, 3.4rem); margin-bottom: 1.6rem; }
 
-/* Community channels — four equal columns */
+/* Community channels — four equal icon buttons */
 .channels {
-  max-width: 720px; margin: 2rem auto 0;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;
+  max-width: 420px; margin: 2.2rem auto 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
 }
 .channel {
   display: flex; align-items: center; justify-content: center;
-  padding: 0.9em 0.5em; border-radius: 10px;
+  aspect-ratio: 1; border-radius: 14px;
   border: 1px solid var(--line); background: rgba(255,255,255,0.03);
-  font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
-  letter-spacing: 1px; font-size: 0.95rem; color: var(--ink);
-  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+  color: var(--ink-soft);
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
-.channel:hover { transform: translateY(-2px); border-color: rgba(242,180,65,0.5); background: rgba(242,180,65,0.08); }
-.channel[aria-disabled="true"] { opacity: 0.55; cursor: default; }
-.channel[aria-disabled="true"]:hover { transform: none; border-color: var(--line); background: rgba(255,255,255,0.03); }
+.channel svg { width: 46%; height: 46%; transition: transform 0.2s ease; }
+.channel:hover {
+  color: var(--thief-2); border-color: rgba(242,180,65,0.5); background: rgba(242,180,65,0.08);
+}
+.channel:hover svg { transform: scale(1.18); }
 
-@media (max-width: 560px) { .channels { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .channels { max-width: 260px; grid-template-columns: repeat(2, 1fr); } }
 
 /* ----------------------------- Footer ---------------------------------- */
 .footer {
   text-align: center; padding: 2.5rem var(--gutter);
-  border-top: 1px solid var(--line); background: var(--bg-2);
+  border-top: 1px solid var(--line); background: transparent;
 }
 .footer__links {
   display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1rem;

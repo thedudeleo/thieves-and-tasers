@@ -11,9 +11,9 @@ const CONFIG = {
   // Discord is live; the others stay visible (link to "#") until you fill them in.
   channels: {
     discord:   "https://discord.gg/ZE6P7HJK",
-    instagram: "",
-    tiktok:    "",
-    youtube:   "",
+    instagram: "https://instagram.com/arcticpalmgames",       // dummy — update later
+    tiktok:    "https://www.tiktok.com/@arcticpalmgames",
+    youtube:   "https://youtube.com/@arcticpalmgames",        // dummy — update later
   },
 };
 
@@ -28,8 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function wireLinks() {
   document.querySelectorAll("[data-wishlist]").forEach((a) => (a.href = CONFIG.steamUrl));
 
-  // Community channel buttons stay visible even before a URL is set, so the
-  // four-up layout never breaks. An empty/placeholder URL just disables the link.
   document.querySelectorAll("[data-channel]").forEach((a) => {
     const url = CONFIG.channels[a.getAttribute("data-channel")];
     if (url && !url.includes("REPLACE_ME")) {
