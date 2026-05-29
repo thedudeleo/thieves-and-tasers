@@ -8,7 +8,7 @@ const CONFIG = {
   steamUrl: "https://store.steampowered.com/app/4536600/Thieves_and_Tasers/",
 
   // Discord invite link
-  discordUrl: "https://discord.gg/REPLACE_ME",
+  discordUrl: "https://discord.gg/ZE6P7HJK",
 
   // Social profiles — leave blank ("") to hide that link
   social: {
@@ -196,7 +196,7 @@ function wireEmailForm() {
       });
       if (res.ok) {
         form.reset();
-        say("You're on the list. We'll be in touch. 🎉", "ok");
+        say("You're on the list. We'll be in touch.", "ok");
       } else {
         say("Hmm, that didn't go through. Try again in a moment.", "err");
       }
@@ -211,7 +211,7 @@ function wireEmailForm() {
 /* Reveal-on-scroll ------------------------------------------------------ */
 function wireReveal() {
   const targets = document.querySelectorAll(
-    ".section__head, .faction, .feature, .clip, .shot, .community__card, .cta-banner__inner"
+    ".section__head, .faction, .clip, .shot, .community__card, .cta-banner__inner"
   );
   targets.forEach((t) => t.classList.add("reveal"));
 

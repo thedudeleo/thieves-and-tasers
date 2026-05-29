@@ -272,20 +272,6 @@ body::after {
   .factions__vs { padding: 0.4rem 0; }
 }
 
-/* ----------------------------- Features -------------------------------- */
-.features__grid {
-  max-width: var(--maxw); margin: 0 auto;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem;
-}
-.feature {
-  background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 1.7rem; transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.feature:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.18); }
-.feature__icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-.feature h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-.feature p { color: var(--ink-soft); font-size: 0.98rem; }
-
 /* ----------------------------- Gallery --------------------------------- */
 .clip {
   max-width: var(--maxw); margin: 0 auto 1.3rem;
@@ -322,6 +308,8 @@ body::after {
 .cta-banner__inner { max-width: 640px; margin: 0 auto; }
 .cta-banner__title { font-size: clamp(2rem, 6vw, 3.4rem); }
 .cta-banner__sub { color: var(--ink-soft); margin: 1rem 0 1.8rem; font-size: 1.1rem; }
+.steam-widget { margin: 0 auto 1.8rem; max-width: 646px; }
+.steam-widget iframe { width: 100%; max-width: 646px; border-radius: 6px; }
 
 /* ----------------------------- Community ------------------------------- */
 .community__grid {
