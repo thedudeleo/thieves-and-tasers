@@ -119,8 +119,9 @@
       </div>
 
       <div class="trailer__frame" data-open-trailer>
-        <!-- Poster still; clicking opens the embedded YouTube trailer in a modal -->
-        <img src="assets/trailer-poster.jpg" alt="Watch the Thieves and Tasers trailer" class="trailer__poster" />
+        <!-- Poster still; clicking opens the embedded YouTube trailer in a modal.
+             Defaults to the YouTube thumbnail; drop assets/trailer-poster.jpg to override. -->
+        <img src="https://img.youtube.com/vi/D6io5XZWBHk/maxresdefault.jpg" alt="Watch the Thieves and Tasers trailer" class="trailer__poster" />
         <span class="trailer__play" aria-hidden="true">▶</span>
       </div>
     </section>
@@ -207,12 +208,14 @@
         <p class="section__lead">Screenshots &amp; clips from the heist.</p>
       </div>
 
-      <!-- GIF / clip strip -->
-      <div class="gallery__gifs">
-        <figure class="gif"><img src="assets/gifs/clip-1.gif" alt="A thief escaping over rooftops" loading="lazy" /></figure>
-        <figure class="gif"><img src="assets/gifs/clip-2.gif" alt="A guard tasing a thief" loading="lazy" /></figure>
-        <figure class="gif"><img src="assets/gifs/clip-3.gif" alt="A laser trap triggering" loading="lazy" /></figure>
-      </div>
+      <!-- Looping muted gameplay clip used as a lightweight "GIF" (a video is far
+           smaller than a real GIF). Swap assets/video/gameplay.mp4 for real footage. -->
+      <figure class="clip">
+        <video class="clip__video" autoplay loop muted playsinline preload="metadata"
+               poster="https://img.youtube.com/vi/D6io5XZWBHk/maxresdefault.jpg">
+          <source src="assets/video/gameplay.mp4" type="video/mp4" />
+        </video>
+      </figure>
 
       <!-- Screenshot grid (click to open lightbox) -->
       <div class="gallery__grid" id="shots">
@@ -252,11 +255,12 @@
           <p>Drop your email for the big beats: playtests, Early Access, and release day.</p>
           <!-- Static hosting can't process forms server-side. Point action= at your provider
                (Mailchimp/Buttondown/ConvertKit/Formspree). See README. -->
-          <form class="email-form" data-email-form action="REPLACE_WITH_EMAIL_FORM_ACTION_URL" method="post" target="_blank">
+          <form class="email-form" data-email-form method="post" novalidate>
             <label class="sr-only" for="email">Email address</label>
             <input id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
             <button type="submit" class="btn btn--wishlist">Notify me</button>
           </form>
+          <p class="email-form__status" data-email-status role="status" aria-live="polite"></p>
           <p class="email-form__note">No spam. Unsubscribe anytime.</p>
         </div>
       </div>

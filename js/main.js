@@ -18,7 +18,14 @@ const CONFIG = {
   },
 
   // YouTube trailer video ID (the part after watch?v=). e.g. "dQw4w9WgXcQ"
-  trailerYouTubeId: "REPLACE_ME",
+  trailerYouTubeId: "D6io5XZWBHk",
+
+  // Email signup endpoint. Paste the form/POST URL from your provider:
+  //   Formspree  -> https://formspree.io/f/xxxxxxxx
+  //   Buttondown -> https://buttondown.email/api/emails/embed-subscribe/<user>
+  //   Mailchimp / ConvertKit also give you a POST URL.
+  // Leave as REPLACE_ME and the form shows a friendly "coming soon" instead of breaking.
+  emailFormAction: "REPLACE_ME",
 };
 
 /* ----------------------------------------------------------------------- */
@@ -28,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wireNavScroll();
   wireTrailer();
   wireLightbox();
+  wireEmailForm();
   wireReveal();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });
@@ -150,10 +158,60 @@ function wireLightbox() {
   });
 }
 
+/* Email signup — submits on-page (no redirect) and shows inline status.
+   Works with any provider that accepts a POST and can return JSON/200. ---- */
+function wireEmailForm() {
+  const form = document.querySelector("[data-email-form]");
+  if (!form) return;
+  const status = form.parentElement.querySelector("[data-email-status]");
+  const input = form.querySelector('input[type="email"]');
+  const button = form.querySelector('button[type="submit"]');
+  const configured = CONFIG.emailFormAction && !CONFIG.emailFormAction.includes("REPLACE_ME");
+
+  if (configured) form.setAttribute("action", CONFIG.emailFormAction);
+
+  const say = (msg, kind) => {
+    if (!status) return;
+    status.textContent = msg;
+    status.dataset.kind = kind; // "ok" | "err" | ""
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!input.checkValidity()) { say("Please enter a valid email.", "err"); input.focus(); return; }
+
+    if (!configured) {
+      say("Signups open soon — check back, or join the Discord for updates!", "");
+      return;
+    }
+
+    const original = button.textContent;
+    button.disabled = true; button.textContent = "Sending…";
+    try {
+      const res = await fetch(CONFIG.emailFormAction, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        form.reset();
+        say("You're on the list. We'll be in touch. 🎉", "ok");
+      } else {
+        say("Hmm, that didn't go through. Try again in a moment.", "err");
+      }
+    } catch (_) {
+      say("Network hiccup — please try again.", "err");
+    } finally {
+      button.disabled = false; button.textContent = original;
+    }
+  });
+}
+
 /* Reveal-on-scroll ------------------------------------------------------ */
 function wireReveal() {
   const targets = document.querySelectorAll(
-    ".section__head, .faction, .feature, .gif, .shot, .community__card, .cta-banner__inner"
+    ".section__head, .faction, .feature, .clip, .shot, .community__card, .cta-banner__inner"
   );
   targets.forEach((t) => t.classList.add("reveal"));
 
