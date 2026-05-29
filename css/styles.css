@@ -125,6 +125,7 @@ body::after {
 .nav__brand-text {
   font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: 1px;
 }
+.nav__logo { height: 40px; width: auto; border-radius: 5px; display: block; }
 .nav__amp { color: var(--thief); }
 .nav__links { display: flex; gap: 1.6rem; margin-left: auto; }
 .nav__links a {
@@ -168,6 +169,11 @@ body::after {
   mask-image: radial-gradient(80% 60% at 50% 40%, #000 30%, transparent 80%);
 }
 .hero__content { position: relative; z-index: 2; max-width: 720px; }
+.hero__title { margin: 0; line-height: 0; }
+.hero__logo {
+  width: min(560px, 82vw); height: auto; border-radius: 12px;
+  box-shadow: 0 12px 50px rgba(0,0,0,0.6); border: 1px solid var(--line);
+}
 .hero__eyebrow {
   text-transform: uppercase; letter-spacing: 3px; font-size: 0.78rem;
   color: var(--thief); font-weight: 600; margin-bottom: 1rem;
