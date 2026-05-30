@@ -72,16 +72,13 @@ function wireLightbox() {
 /* Sticky wishlist bar — reveals once the hero scrolls out of view --------- */
 function wireWishbar() {
   const bar = document.getElementById("wishbar");
-  const hero = document.querySelector(".hero");
-  if (!bar || !hero) return;
+  if (!bar) return;
   bar.hidden = false;
 
-  if (!("IntersectionObserver" in window)) { bar.classList.add("is-visible"); return; }
-  const io = new IntersectionObserver(
-    ([e]) => bar.classList.toggle("is-visible", !e.isIntersecting),
-    { threshold: 0, rootMargin: "0px" }
-  );
-  io.observe(hero);
+  // Reveal after a short scroll, not only once the whole hero leaves view.
+  const onScroll = () => bar.classList.toggle("is-visible", window.scrollY > 320);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 }
 
 /* Reveal-on-scroll ------------------------------------------------------ */
