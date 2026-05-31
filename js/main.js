@@ -11,9 +11,9 @@ const CONFIG = {
   // Discord is live; the others stay visible (link to "#") until you fill them in.
   channels: {
     discord:   "https://discord.gg/ZE6P7HJK",
-    instagram: "https://instagram.com/arcticpalmgames",       // dummy — update later
+    instagram: "",                                            // add real URL to enable
     tiktok:    "https://www.tiktok.com/@arcticpalmgames",
-    youtube:   "https://youtube.com/@arcticpalmgames",        // dummy — update later
+    youtube:   "",                                            // add real URL to enable
   },
 };
 

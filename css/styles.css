@@ -39,6 +39,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* room so the fixed wishlist bar never covers the footer / closing content */
+  padding-bottom: 5.5rem;
 }
 
 img { max-width: 100%; display: block; }
@@ -259,6 +261,8 @@ body::after {
 .channel svg { width: 60%; height: 60%; transition: transform 0.2s ease; }
 .channel:hover { color: var(--thief-2); }
 .channel:hover svg { transform: scale(1.18); }
+/* channels without a configured URL (set to "" in CONFIG) — muted, non-clickable */
+.channel[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
 
 @media (max-width: 460px) { .channels { max-width: 260px; grid-template-columns: repeat(2, 1fr); } }
 
