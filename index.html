@@ -80,29 +80,31 @@
     <!-- ===================== ALTERNATING ROWS ===================== -->
     <section class="rows">
       <!-- Two sides: image left, text right -->
-      <article class="row row--reverse">
-        <button class="row__media" data-shot><img src="assets/screenshots/guard_rocketboost.png" alt="Players facing off in a heist" loading="lazy" /></button>
+      <article class="row row--reverse row--heist">
+        <button class="row__media" data-shot><img src="assets/screenshots/mainhouse_overview.png" alt="Players facing off in a heist" loading="lazy" /></button>
         <div class="row__text">
-          <h2>Two sides. One <span class="hl">heist</span>.</h2>
+          <h2>Two sides. One <span class="hl hl--red">heist</span>.</h2>
           <p>Every match splits your group into two crews with opposite goals. Pick a side, talk trash, betray someone — then run it back.</p>
         </div>
       </article>
 
       <!-- Thieves: text left, image right -->
       <article class="row row--thieves">
-        <button class="row__media" data-shot><img src="assets/screenshots/thief_sneaking.png" alt="A thief sneaking through a warehouse" loading="lazy" /></button>
+        <div class="row__media row__media--character"><img src="assets/screenshots/thieves.png" alt="Thief characters" loading="lazy" /></div>
         <div class="row__text">
           <h2>Thieves</h2>
           <p>Climb walls, vault rooftops, and stay in the shadows. Grab the treasure and slip out before the guards catch up.</p>
+          <button class="row__media" data-shot><img src="assets/screenshots/thief_sneaking.png" alt="A thief sneaking through a warehouse" loading="lazy" /></button>
         </div>
       </article>
 
-      <!-- Guards: image left, text right -->
+      <!-- Guards: text left, character right -->
       <article class="row row--reverse row--guards">
-        <button class="row__media" data-shot><img src="assets/screenshots/guard_running.png" alt="A guard patrolling at night" loading="lazy" /></button>
+        <div class="row__media row__media--character"><img src="assets/screenshots/guard.png" alt="Guard character" loading="lazy" /></div>
         <div class="row__text">
           <h2>Guards</h2>
           <p>Lock the place down. Strap on your jetpack, set your traps, and zap thieves on sight — then cuff them before they get away with the goods.</p>
+          <button class="row__media" data-shot><img src="assets/screenshots/guard_running.png" alt="A guard patrolling at night" loading="lazy" /></button>
         </div>
       </article>
     </section>
@@ -153,6 +155,39 @@
     <img class="lightbox__img" id="lightboxImg" alt="" />
     <button class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="Next">›</button>
   </div>
+
+  <!-- SVG filters -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute">
+    <!-- Hand-drawn border: wobbles the stroke of image frames -->
+    <filter id="hand-drawn" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- Character outline: green (thieves) -->
+    <filter id="char-outline-green" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="8" result="noise"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="dilated"/>
+      <feDisplacementMap in="dilated" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="wobbly"/>
+      <feFlood flood-color="#71de47" result="color"/>
+      <feComposite in="color" in2="wobbly" operator="in" result="outline"/>
+      <feMerge>
+        <feMergeNode in="outline"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Character outline: orange (guards) -->
+    <filter id="char-outline-orange" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="8" result="noise"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="dilated"/>
+      <feDisplacementMap in="dilated" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="wobbly"/>
+      <feFlood flood-color="#ffab40" result="color"/>
+      <feComposite in="color" in2="wobbly" operator="in" result="outline"/>
+      <feMerge>
+        <feMergeNode in="outline"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </svg>
 
   <script src="js/main.js"></script>
 </body>
