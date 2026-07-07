@@ -7,7 +7,7 @@
 
   <title>Thieves and Tasers</title>
   <meta name="description" content="Sneak, steal, get tased. Thieves climb in and grab the loot; guards hunt them with cameras, traps, and tasers. Wishlist now on Steam." />
-  <meta name="theme-color" content="#080809" />
+  <meta name="theme-color" content="#23174c" />
   <link rel="canonical" href="https://www.thievesandtasers.com/" />
 
   <meta property="og:type" content="website" />
@@ -29,9 +29,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 
@@ -66,8 +63,9 @@
       <img src="assets/logo.png" alt="Thieves and Tasers" class="hero__logo" />
 
       <figure class="hero__media">
-        <img src="assets/screenshots/shot-4.jpg" alt="Thieves and Tasers gameplay" />
-        <span class="hero__erode" aria-hidden="true"></span>
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="assets/video/gameplay.mp4" type="video/mp4" />
+        </video>
       </figure>
 
       <p class="hero__tagline">Sneak, steal, get tased.</p>
@@ -83,7 +81,7 @@
     <section class="rows">
       <!-- Two sides: image left, text right -->
       <article class="row row--reverse">
-        <button class="row__media" data-shot><img src="assets/screenshots/shot-2.jpg" alt="Players facing off in a heist" loading="lazy" /></button>
+        <button class="row__media" data-shot><img src="assets/screenshots/guard_rocketboost.png" alt="Players facing off in a heist" loading="lazy" /></button>
         <div class="row__text">
           <h2>Two sides. One <span class="hl">heist</span>.</h2>
           <p>Every match splits your group into two crews with opposite goals. Pick a side, talk trash, betray someone — then run it back.</p>
@@ -91,8 +89,8 @@
       </article>
 
       <!-- Thieves: text left, image right -->
-      <article class="row">
-        <button class="row__media" data-shot><img src="assets/screenshots/shot-1.jpg" alt="A thief reaching glowing loot" loading="lazy" /></button>
+      <article class="row row--thieves">
+        <button class="row__media" data-shot><img src="assets/screenshots/thief_sneaking.png" alt="A thief sneaking through a warehouse" loading="lazy" /></button>
         <div class="row__text">
           <h2>Thieves</h2>
           <p>Climb walls, vault rooftops, and stay in the shadows. Grab the treasure and slip out before the guards catch up.</p>
@@ -100,27 +98,26 @@
       </article>
 
       <!-- Guards: image left, text right -->
-      <article class="row row--reverse">
-        <button class="row__media" data-shot><img src="assets/screenshots/shot-6.jpg" alt="A guard patrolling a mansion" loading="lazy" /></button>
+      <article class="row row--reverse row--guards">
+        <button class="row__media" data-shot><img src="assets/screenshots/guard_running.png" alt="A guard patrolling at night" loading="lazy" /></button>
         <div class="row__text">
           <h2>Guards</h2>
-          <p>Lock the place down. Watch the cameras, set your traps, and zap thieves on sight — then cuff them before they get away with the goods.</p>
+          <p>Lock the place down. Strap on your jetpack, set your traps, and zap thieves on sight — then cuff them before they get away with the goods.</p>
         </div>
       </article>
     </section>
 
     <!-- ===================== WISHLIST CTA ===================== -->
     <section class="cta">
-      <h2 class="cta__title">Be there on <span class="hl">day one</span>.</h2>
+      <h2 class="cta__title">Be there on day <span class="hl">one</span>.</h2>
     </section>
 
     <!-- ===================== CLOSING VIDEO ===================== -->
     <section class="strip">
       <figure class="shot shot--solo">
-        <video autoplay loop muted playsinline preload="auto" poster="assets/screenshots/shot-7.jpg">
+        <video autoplay loop muted playsinline preload="auto" poster="assets/screenshots/thief_sneaking2.png">
           <source src="assets/video/gameplay.mp4" type="video/mp4" />
         </video>
-        <span class="shot__fade" aria-hidden="true"></span>
       </figure>
 
       <div class="channels">
