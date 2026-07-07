@@ -10,7 +10,7 @@ const CONFIG = {
   // Community channels — paste real URLs when you have them.
   // Discord is live; the others stay visible (link to "#") until you fill them in.
   channels: {
-    discord:   "https://discord.gg/ZE6P7HJK",
+    discord:   "https://discord.gg/ShfdKx4TKq",
     instagram: "https://www.instagram.com/arcticpalmgames",
     tiktok:    "https://www.tiktok.com/@arcticpalmgames",
     youtube:   "https://www.youtube.com/@arcticpalmgames",
