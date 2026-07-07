@@ -152,7 +152,7 @@ body {
 .hero__tagline {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   letter-spacing: clamp(1px, 0.6vw, 3px); font-size: clamp(1.5rem, 6.5vw, 4.2rem); line-height: 1.05;
-  color: var(--orange);
+  color: var(--ink);
   margin-top: -0.3rem; white-space: nowrap;
 }
 
@@ -210,8 +210,25 @@ body {
 .row--thieves .row__media::after { border-color: var(--green); }
 .row--guards .row__text h2 { color: var(--orange); }
 
+/* Character rows: title+text and screenshot share one column; the character
+   spans the full height of the other column. Placement is by grid areas so the
+   same markup reflows cleanly on mobile (see media query below). */
 .row--thieves,
-.row--guards { align-items: start; }
+.row--guards {
+  align-items: start;
+  grid-template-areas:
+    "char text"
+    "char shot";
+}
+.row--guards {
+  grid-template-areas:
+    "text char"
+    "shot char";
+}
+.row--thieves > .row__text,
+.row--guards  > .row__text { grid-area: text; }
+.row__media--character { grid-area: char; }
+.row__media--shot { grid-area: shot; }
 
 .row__media--character {
   border: none; background: transparent; box-shadow: none;
@@ -230,12 +247,20 @@ body {
   .row--reverse .row__media { order: 0; }
   .row__text { text-align: center; }
   .row__text p { margin: 0 auto; }
+
+  /* Character rows stack: title + text, then the character, then the screenshot. */
+  .row--thieves,
+  .row--guards { grid-template-areas: "text" "char" "shot"; }
+  .row__media--character { justify-content: center; }
+  .row__media--character img {
+    width: auto; height: auto; max-width: 100%; max-height: 52vh; margin: 0 auto;
+  }
 }
 
 /* ----------------------------- Screenshot strip ------------------------ */
 .strip {
   max-width: 960px; margin: 0 auto;
-  padding: clamp(1rem, 3vw, 2rem) var(--gutter) clamp(2rem, 5vw, 4rem);
+  padding: clamp(0.5rem, 1.5vw, 1rem) var(--gutter) clamp(1rem, 2.5vw, 1.75rem);
   display: grid; grid-template-columns: 1fr; gap: 1rem;
 }
 .shot {
@@ -260,7 +285,7 @@ body {
   padding: clamp(3.5rem, 8vw, 6rem) var(--gutter) clamp(0.75rem, 2vw, 1.5rem);
   /* No section background — the page-wide amber fade (on body) shows through. */
 }
-.cta__title { font-size: clamp(2.6rem, 7.5vw, 5rem); margin-bottom: 1.6rem; }
+.cta__title { font-size: clamp(2.6rem, 7.5vw, 5rem); margin-bottom: 0; }
 
 /* Community channels — four equal icon buttons */
 .channels {
@@ -281,17 +306,19 @@ body {
 
 /* ----------------------------- Footer ---------------------------------- */
 .footer {
-  text-align: center; padding: 2.5rem var(--gutter);
+  padding: 1rem var(--gutter) 1.75rem;
   background: transparent;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 0.5rem 2rem;
 }
 .footer__links {
-  display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1rem;
+  display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;
 }
 .footer__links a {
   color: var(--ink-soft); font-size: 0.95rem; transition: color 0.2s ease;
 }
 .footer__links a:hover { color: var(--thief); }
-.footer__by { color: var(--ink-dim); font-size: 0.85rem; }
+.footer__by { color: var(--ink-soft); font-size: 0.95rem; }
 
 /* ----------------------------- Lightbox -------------------------------- */
 .lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; }

@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
   wireLightbox();
   wireWishbar();
   wireReveal();
-  wireCharacterHeights();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });
 
@@ -80,19 +79,6 @@ function wireWishbar() {
   const onScroll = () => bar.classList.toggle("is-visible", window.scrollY > 320);
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
-}
-
-/* Match character PNG height to content column --------------------------- */
-function wireCharacterHeights() {
-  const rows = document.querySelectorAll(".row--thieves, .row--guards");
-  const sync = () => rows.forEach((row) => {
-    const text = row.querySelector(".row__text");
-    const char = row.querySelector(".row__media--character");
-    if (!text || !char) return;
-    char.style.height = text.offsetHeight + "px";
-  });
-  sync();
-  new ResizeObserver(sync).observe(document.body);
 }
 
 /* Reveal-on-scroll ------------------------------------------------------ */
