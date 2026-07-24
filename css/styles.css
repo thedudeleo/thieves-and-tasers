@@ -281,8 +281,9 @@ body {
   filter: url(#hand-drawn); z-index: 1;
 }
 .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.shot video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .shot:hover img { transform: scale(1.04); }
+.shot--solo { cursor: default; }
+.shot--solo:hover img { transform: none; }
 
 
 /* ----------------------------- CTA ------------------------------------- */
