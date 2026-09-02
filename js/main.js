@@ -47,14 +47,23 @@ function wireLightbox() {
   const img = document.getElementById("lightboxImg");
   const shots = [...document.querySelectorAll("[data-shot] img")].map((i) => i.src);
   let idx = 0;
+  let closeTimer;
 
   const show = (i) => {
+    clearTimeout(closeTimer);
     idx = (i + shots.length) % shots.length;
     img.src = shots[idx];
     box.hidden = false;
+    // next frame so the opacity/scale transition actually runs from the hidden state
+    requestAnimationFrame(() => box.classList.add("is-open"));
     document.body.style.overflow = "hidden";
+    img.animate?.([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: "ease" });
   };
-  const close = () => { box.hidden = true; img.src = ""; document.body.style.overflow = ""; };
+  const close = () => {
+    box.classList.remove("is-open");
+    document.body.style.overflow = "";
+    closeTimer = setTimeout(() => { box.hidden = true; img.src = ""; }, 260);
+  };
 
   document.querySelectorAll("[data-shot]").forEach((btn, i) => btn.addEventListener("click", () => show(i)));
   document.querySelector("[data-close-lightbox]")?.addEventListener("click", close);
