@@ -128,25 +128,31 @@ body {
   transform: translateY(100%); transition: transform 0.35s ease;
 }
 .wishbar.is-visible { transform: translateY(0); }
-.wishbar::before {
-  content: ""; position: absolute; top: -10px; left: -5%; right: -5%;
-  height: 14px; background: rgba(18, 10, 50, 0.95);
-  filter: url(#hand-drawn); pointer-events: none; z-index: 1;
+/* Curvy top edge: a purple cap (same as the bar) makes the top wavy, with a thin
+   black outline on the wave — the button's idea, fill matched so it's not a border. */
+.wishbar__edge {
+  position: absolute; left: -2%; right: -2%; top: -12px; height: 18px;
+  z-index: 2; pointer-events: none; overflow: visible;
+  stroke-linejoin: round; stroke-linecap: round;
 }
+.wishbar__edge .edge-fill { fill: rgb(18, 10, 50); }
+.wishbar__edge .edge-line { fill: none; stroke: var(--outline); stroke-width: 3px; }
 .wishbar[hidden] { display: none; }
 .wishbar__btn {
   display: inline-flex; align-items: center; gap: 0.55em;
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.6px; font-size: 1.4rem;
-  padding: 0.5em 1.4em; border-radius: 10px;
-  background: var(--orange); color: var(--purple);
-  position: relative; overflow: visible;
+  padding: 0.5em 1.4em;
+  background: transparent; color: var(--purple);
+  position: relative; z-index: 0; overflow: visible;
   transition: transform 0.15s ease, filter 0.2s ease;
 }
-.wishbar__btn::after {
-  content: ""; position: absolute; inset: -3px; border-radius: 14px;
-  border: 6px solid var(--orange); pointer-events: none;
-  filter: url(#hand-drawn); z-index: 1;
+/* The button's amber shape IS the wavy pill (SVG fill), with a thin black
+   outline stroke. No colored border band — outline only. Sits behind the label. */
+.wishbar__frame {
+  position: absolute; inset: -2px; z-index: -1; pointer-events: none; overflow: visible;
+  fill: var(--orange); stroke: var(--outline); stroke-width: 3px;
+  stroke-linejoin: round; stroke-linecap: round;
 }
 .wishbar__btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
 .wishbar__steam { width: 1.1em; height: 1.1em; }
@@ -166,7 +172,7 @@ body {
 }
 .hero__tagline {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.6vw, 3px); font-size: clamp(1.5rem, 6.5vw, 4.2rem); line-height: 1.05;
+  letter-spacing: clamp(1px, 0.6vw, 3px); font-size: clamp(1.35rem, 6.5vw, 4.2rem); line-height: 1.05;
   color: var(--ink); text-shadow: var(--text-outline);
   margin-top: -0.3rem; white-space: nowrap;
 }
@@ -197,7 +203,7 @@ body {
 }
 /* Wider black pass behind + colored pass on top = thin dark rim on the border,
    matching the outlined display text. */
-.frame__edge { stroke: var(--outline); stroke-width: calc(var(--media-border) + 2px); }
+.frame__edge { stroke: var(--outline); stroke-width: calc(var(--media-border) + 5px); } /* ~2.5px black rim each side */
 .frame__fill { stroke: var(--frame, var(--orange)); stroke-width: var(--media-border); }
 
 
@@ -211,7 +217,7 @@ body {
   display: grid; gap: clamp(2.5rem, 6vw, 5rem);
 }
 .row {
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem);
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
 }
 .row--reverse .row__media { order: 2; }
@@ -261,15 +267,19 @@ body {
 
 .row__media--character {
   border: none; background: transparent; box-shadow: none;
-  overflow: visible; container-type: normal;
-  display: flex; align-items: flex-end; justify-content: center;
+  container-type: normal;
+  display: flex; align-items: center; justify-content: center;
   /* Fixed square footprint keyed to the column width, so both characters render
      at the same height no matter their individual proportions (contain scales
      each to fit without distortion). */
   aspect-ratio: 1 / 1;
+  /* Symmetric breathing room that also absorbs the parallax travel (clamped to
+     26px in main.js); overflow: hidden then guarantees no bleed into neighbours. */
+  padding: 34px 0;
+  overflow: hidden;
 }
 .row__media--character img {
-  width: 100%; height: 100%; object-fit: contain; object-position: bottom center;
+  width: 100%; height: 100%; object-fit: contain; object-position: center;
 }
 .row--thieves .row__media--character img { filter: url(#char-outline-green); }
 .row--guards  .row__media--character img { filter: url(#char-outline-orange); }

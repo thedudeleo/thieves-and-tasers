@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wireLightbox();
   wireWishbar();
   wireReveal();
+  wireParallax();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });
 
@@ -76,6 +77,39 @@ function wireLightbox() {
     if (e.key === "ArrowLeft") show(idx - 1);
     if (e.key === "ArrowRight") show(idx + 1);
   });
+}
+
+/* Subtle parallax — foreground art only (text stays static for readability).
+   Off for reduced-motion and on small screens, per accessibility guidance. */
+function wireParallax() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const small = window.matchMedia("(max-width: 760px)").matches;
+  if (reduce || small) return;
+
+  const els = [...document.querySelectorAll("[data-parallax]")];
+  if (!els.length) return;
+
+  // Hard cap on travel so the art can never leave its padded cell (see the
+  // matching padding on .row__media--character).
+  const MAX = 26;
+  let ticking = false;
+  const update = () => {
+    const mid = window.innerHeight / 2;
+    els.forEach((el) => {
+      const speed = parseFloat(el.dataset.parallax) || 0.05;
+      const rect = el.getBoundingClientRect();
+      let drift = -(rect.top + rect.height / 2 - mid) * speed;
+      drift = Math.max(-MAX, Math.min(MAX, drift));
+      el.style.transform = `translate3d(0, ${drift.toFixed(1)}px, 0)`;
+    });
+    ticking = false;
+  };
+  const onScroll = () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  update();
 }
 
 /* Sticky wishlist bar — reveals once the hero scrolls out of view --------- */
