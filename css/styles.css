@@ -286,9 +286,11 @@ body {
 .row__text p { color: var(--ink-soft); font-size: clamp(1.3rem, 2.2vw, 1.7rem); max-width: 46ch; }
 
 @media (max-width: 760px) {
-  .row { grid-template-columns: 1fr; gap: 1.2rem; }
+  /* More air between each image and its heading/text than the desktop rows need,
+     so stacked content doesn't read as cramped. */
+  .row { grid-template-columns: 1fr; gap: 1.8rem; }
   .row--reverse .row__media { order: 0; }
-  .row__text { text-align: center; }
+  .row__text { text-align: center; gap: 1.15rem; }
   .row__text p { margin: 0 auto; }
 
   /* Character rows stack: title + text, then the character, then the screenshot. */
@@ -411,4 +413,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Small phones (iPhone SE and down): shrink the display headings with the
+   viewport so no header wraps to two lines. Placed last so it overrides the
+   base heading sizes (media queries add no specificity). The vw term drives
+   sizing here; the rem floor only catches the very smallest widths. */
+@media (max-width: 480px) {
+  .row__text h2  { font-size: clamp(1.75rem, 8.4vw, 2.6rem); }
+  .cta__title    { font-size: clamp(1.45rem, 7vw, 2.6rem); }
+  .hero__tagline { font-size: clamp(1.2rem, 6vw, 1.9rem); }
 }
