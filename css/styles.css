@@ -182,7 +182,9 @@ body {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   letter-spacing: clamp(1px, 0.6vw, 3px); font-size: clamp(1.35rem, 6.5vw, 4.2rem); line-height: 1.05;
   color: var(--ink); text-shadow: var(--text-outline);
-  margin-top: -0.3rem; white-space: nowrap;
+  /* Breathing room above and below the tagline so it reads as its own beat
+     between the trailer and the Steam widget. */
+  margin-block: clamp(0.75rem, 3.5vw, 1.75rem); white-space: nowrap;
 }
 
 /* Amber keyword accent in section headers */
@@ -276,13 +278,15 @@ body {
 .row__media--character {
   border: none; background: transparent; box-shadow: none;
   container-type: normal;
-  display: flex; align-items: center; justify-content: center;
+  /* Art starts at the TOP of the window and the parallax drifts it down (see
+     wireParallax); horizontally centered. */
+  display: flex; align-items: flex-start; justify-content: center;
   /* Fixed square footprint keyed to the column width, so both characters render
      at the same height no matter their individual proportions (contain scales
      each to fit without distortion). */
   aspect-ratio: 1 / 1;
-  /* Symmetric breathing room that also absorbs the parallax travel (clamped to
-     26px in main.js); overflow: hidden then guarantees no bleed into neighbours. */
+  /* Slack between the window and the art is the parallax travel; overflow hidden
+     keeps the art from bleeding into neighbours as it rides through. */
   padding: 34px 0;
   overflow: hidden;
 }
@@ -299,18 +303,25 @@ body {
      what belongs together reads as one group. */
   .row { grid-template-columns: 1fr; gap: var(--space-gap); }
   .row--reverse .row__media { order: 0; }
-  .row__text { text-align: center; }
-  .row__text p { margin: 0 auto; }
+  /* Headers and body read left-aligned on mobile (the tagline and the CTA stay
+     centered — they live in their own centered sections). Images stay centered. */
+  .row__text { text-align: left; }
+  .row__text p { margin: 0; max-width: none; }
 
   /* Character rows stack: title + text, then the character, then the screenshot. */
   .row--thieves,
   .row--guards { grid-template-areas: "text" "char" "shot"; }
-  .row__media--character { aspect-ratio: auto; justify-content: center; }
+  /* The window is taller than the art; the difference is the parallax travel the
+     character rides top → bottom as you scroll. Both scale with the viewport. */
+  .row__media--character {
+    aspect-ratio: auto; padding: 0;
+    height: min(52vh, 84vw);
+  }
   .row__media--character img {
     width: auto; height: auto; max-width: 100%;
-    /* Cap by both viewport height and width so the character stays a sensible
-       size on any small screen instead of dominating it — no fixed breakpoints. */
-    max-height: min(42vh, 66vw); margin: 0 auto;
+    /* Art capped by both viewport height and width so it stays a sensible size on
+       any small screen instead of dominating it — no fixed breakpoints. */
+    max-height: min(40vh, 64vw); margin: 0;
   }
 }
 

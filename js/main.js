@@ -79,28 +79,31 @@ function wireLightbox() {
   });
 }
 
-/* Subtle parallax — foreground art only (text stays static for readability).
-   Off for reduced-motion and on small screens, per accessibility guidance. */
+/* Contained parallax — foreground art travels within its own window: it sits at
+   the top as the window scrolls into view and drifts down to the bottom as you
+   scroll past, then stops (clamped to the window's slack). Text stays static for
+   readability. Off for reduced-motion. */
 function wireParallax() {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const small = window.matchMedia("(max-width: 760px)").matches;
-  if (reduce || small) return;
+  if (reduce) return;
 
-  const els = [...document.querySelectorAll("[data-parallax]")];
-  if (!els.length) return;
+  const imgs = [...document.querySelectorAll("[data-parallax]")];
+  if (!imgs.length) return;
 
-  // Hard cap on travel so the art can never leave its padded cell (see the
-  // matching padding on .row__media--character).
-  const MAX = 26;
   let ticking = false;
   const update = () => {
-    const mid = window.innerHeight / 2;
-    els.forEach((el) => {
-      const speed = parseFloat(el.dataset.parallax) || 0.05;
-      const rect = el.getBoundingClientRect();
-      let drift = -(rect.top + rect.height / 2 - mid) * speed;
-      drift = Math.max(-MAX, Math.min(MAX, drift));
-      el.style.transform = `translate3d(0, ${drift.toFixed(1)}px, 0)`;
+    const vh = window.innerHeight;
+    imgs.forEach((img) => {
+      const box = img.closest(".row__media--character") || img.parentElement;
+      // Vertical room the art can travel inside its window (0 → no parallax).
+      const slack = box.clientHeight - img.offsetHeight;
+      if (slack <= 1) { img.style.transform = ""; return; }
+      const rect = box.getBoundingClientRect();
+      // 0 as the window enters from the bottom of the viewport, 1 once it has
+      // scrolled off the top — so the art rides top → bottom of its window.
+      let p = (vh - rect.top) / (vh + rect.height);
+      p = Math.max(0, Math.min(1, p));
+      img.style.transform = `translate3d(0, ${(p * slack).toFixed(1)}px, 0)`;
     });
     ticking = false;
   };
