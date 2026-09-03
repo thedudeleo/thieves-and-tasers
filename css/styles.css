@@ -308,20 +308,26 @@ body {
   .row__text { text-align: left; }
   .row__text p { margin: 0; max-width: none; }
 
-  /* Character rows stack: title + text, then the character, then the screenshot. */
+  /* Character rows: the character sits beside the text (no parallax window that
+     would waste vertical space on a narrow screen), with the screenshot full
+     width below. */
   .row--thieves,
-  .row--guards { grid-template-areas: "text" "char" "shot"; }
-  /* The window is taller than the art; the difference is the parallax travel the
-     character rides top → bottom as you scroll. Both scale with the viewport. */
+  .row--guards {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "text char"
+      "shot shot";
+    align-items: center;
+    column-gap: clamp(0.9rem, 4vw, 1.5rem);
+  }
   .row__media--character {
-    aspect-ratio: auto; padding: 0;
-    height: min(42vh, 68vw);
+    aspect-ratio: auto; padding: 0; height: auto;
+    align-items: center; overflow: visible;
   }
   .row__media--character img {
     width: auto; height: auto; max-width: 100%;
-    /* Art capped by both viewport height and width so it stays a sensible size on
-       any small screen instead of dominating it — no fixed breakpoints. */
-    max-height: min(33vh, 52vw); margin: 0;
+    /* Sized to sit next to the text; scales with the viewport, no breakpoints. */
+    max-height: min(28vh, 38vw); margin: 0;
   }
 }
 

@@ -82,22 +82,28 @@ function wireLightbox() {
 /* Contained parallax — foreground art travels within its own window: it sits at
    the top as the window scrolls into view and drifts down to the bottom as you
    scroll past, then stops (clamped to the window's slack). Text stays static for
-   readability. Off for reduced-motion. */
+   readability. Off for reduced-motion and on small screens (there the character
+   sits beside the text instead, so there is no window to travel in). */
 function wireParallax() {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce) return;
 
+  const small = window.matchMedia("(max-width: 760px)");
   const imgs = [...document.querySelectorAll("[data-parallax]")];
   if (!imgs.length) return;
 
+  // Keep the art's outline clear of the clipped window edges at either extreme.
+  const PAD = 14;
   let ticking = false;
   const update = () => {
+    if (small.matches) { imgs.forEach((img) => (img.style.transform = "")); ticking = false; return; }
     const vh = window.innerHeight;
     imgs.forEach((img) => {
       const box = img.closest(".row__media--character") || img.parentElement;
       // Vertical room the art can travel inside its window (0 → no parallax).
       const slack = box.clientHeight - img.offsetHeight;
       if (slack <= 1) { img.style.transform = ""; return; }
+      const travel = Math.max(0, slack - 2 * PAD);
       const rect = box.getBoundingClientRect();
       // Progress tied to the viewport centre crossing the window: 0 when the
       // window's top reaches the centre (art at the top of the box), 1 when its
@@ -105,7 +111,7 @@ function wireParallax() {
       // out while the row is prominently in view, not half off-screen.
       let p = (vh / 2 - rect.top) / rect.height;
       p = Math.max(0, Math.min(1, p));
-      img.style.transform = `translate3d(0, ${(p * slack).toFixed(1)}px, 0)`;
+      img.style.transform = `translate3d(0, ${(PAD + p * travel).toFixed(1)}px, 0)`;
     });
     ticking = false;
   };
