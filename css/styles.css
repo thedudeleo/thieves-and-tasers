@@ -291,7 +291,7 @@ body {
 .row__media--character img {
   /* Art shorter than its window; the leftover height is the travel. Both
      characters cap at the same fraction so they render the same height. */
-  width: auto; height: auto; max-width: 100%; max-height: 62%; margin: 0;
+  width: auto; height: auto; max-width: 100%; max-height: 72%; margin: 0;
 }
 .row--thieves .row__media--character img { filter: url(#char-outline-green); }
 .row--guards  .row__media--character img { filter: url(#char-outline-orange); }
@@ -321,7 +321,7 @@ body {
     width: auto; height: auto; max-width: 100%;
     /* Art capped by both viewport height and width so it stays a sensible size on
        any small screen instead of dominating it — no fixed breakpoints. */
-    max-height: min(28vh, 45vw); margin: 0;
+    max-height: min(33vh, 52vw); margin: 0;
   }
 }
 

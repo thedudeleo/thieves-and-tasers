@@ -99,9 +99,11 @@ function wireParallax() {
       const slack = box.clientHeight - img.offsetHeight;
       if (slack <= 1) { img.style.transform = ""; return; }
       const rect = box.getBoundingClientRect();
-      // 0 as the window enters from the bottom of the viewport, 1 once it has
-      // scrolled off the top — so the art rides top → bottom of its window.
-      let p = (vh - rect.top) / (vh + rect.height);
+      // Progress tied to the viewport centre crossing the window: 0 when the
+      // window's top reaches the centre (art at the top of the box), 1 when its
+      // bottom reaches the centre (art at the bottom) — so the full sweep plays
+      // out while the row is prominently in view, not half off-screen.
+      let p = (vh / 2 - rect.top) / rect.height;
       p = Math.max(0, Math.min(1, p));
       img.style.transform = `translate3d(0, ${(p * slack).toFixed(1)}px, 0)`;
     });
