@@ -44,6 +44,14 @@
   --gutter: clamp(1.1rem, 4vw, 3rem);
   --radius: 14px;
 
+  /* Fluid spacing scale — one rhythm everywhere so grouping reads clearly:
+     tight binds a header to its own text; gap sits between separate elements
+     (image ↔ text, image ↔ image); section separates whole rows. Each scales
+     with the viewport, so nothing is pinned to a specific screen size. */
+  --space-tight:   clamp(0.6rem, 1.8vw, 1rem);
+  --space-gap:     clamp(2rem, 6vw, 3.25rem);
+  --space-section: clamp(3rem, 9vw, 5.5rem);
+
   --shadow: 0 26px 60px rgba(0, 0, 0, 0.85), 0 10px 22px rgba(0, 0, 0, 0.7);
   /* Media frame thickness in container-width units (cqw), so the border-to-image
      ratio is the same on every frame regardless of how big that image renders.
@@ -214,7 +222,7 @@ body {
 .rows {
   max-width: var(--maxw); margin: 0 auto;
   padding: clamp(2rem, 5vw, 4rem) var(--gutter);
-  display: grid; gap: clamp(2.5rem, 6vw, 5rem);
+  display: grid; gap: var(--space-section);
 }
 .row {
   display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem);
@@ -236,7 +244,7 @@ body {
 /* Heist and thieves cards tilt the opposite way from the guards card. */
 .row--heist, .row--thieves { --tilt: 2.5deg; }
 
-.row__text { display: flex; flex-direction: column; gap: 1rem; }
+.row__text { display: flex; flex-direction: column; gap: var(--space-tight); }
 .row__text h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 0; }
 .row--thieves .row__text h2 { color: var(--green); }
 .row--thieves { --frame: var(--green); }
@@ -286,11 +294,12 @@ body {
 .row__text p { color: var(--ink-soft); font-size: clamp(1.3rem, 2.2vw, 1.7rem); max-width: 46ch; }
 
 @media (max-width: 760px) {
-  /* More air between each image and its heading/text than the desktop rows need,
-     so stacked content doesn't read as cramped. */
-  .row { grid-template-columns: 1fr; gap: 1.8rem; }
+  /* Stacked: separate elements sit a --space-gap apart, while each header stays
+     bound to its own text by the tighter --space-tight (set on .row__text), so
+     what belongs together reads as one group. */
+  .row { grid-template-columns: 1fr; gap: var(--space-gap); }
   .row--reverse .row__media { order: 0; }
-  .row__text { text-align: center; gap: 1.15rem; }
+  .row__text { text-align: center; }
   .row__text p { margin: 0 auto; }
 
   /* Character rows stack: title + text, then the character, then the screenshot. */
@@ -298,7 +307,10 @@ body {
   .row--guards { grid-template-areas: "text" "char" "shot"; }
   .row__media--character { aspect-ratio: auto; justify-content: center; }
   .row__media--character img {
-    width: auto; height: auto; max-width: 100%; max-height: 52vh; margin: 0 auto;
+    width: auto; height: auto; max-width: 100%;
+    /* Cap by both viewport height and width so the character stays a sensible
+       size on any small screen instead of dominating it — no fixed breakpoints. */
+    max-height: min(42vh, 66vw); margin: 0 auto;
   }
 }
 
