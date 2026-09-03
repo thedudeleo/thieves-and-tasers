@@ -279,19 +279,19 @@ body {
   border: none; background: transparent; box-shadow: none;
   container-type: normal;
   /* Art starts at the TOP of the window and the parallax drifts it down (see
-     wireParallax); horizontally centered. */
+     wireParallax); horizontally centered. No padding, so the window's full
+     height is the parallax track — the art rides from the top down to exactly
+     the bottom edge and its feet never clip. */
   display: flex; align-items: flex-start; justify-content: center;
-  /* Fixed square footprint keyed to the column width, so both characters render
-     at the same height no matter their individual proportions (contain scales
-     each to fit without distortion). */
+  /* Square window spanning the text + screenshot column; its height is the
+     parallax track (top = beside the heading, bottom = beside the screenshot). */
   aspect-ratio: 1 / 1;
-  /* Slack between the window and the art is the parallax travel; overflow hidden
-     keeps the art from bleeding into neighbours as it rides through. */
-  padding: 34px 0;
   overflow: hidden;
 }
 .row__media--character img {
-  width: 100%; height: 100%; object-fit: contain; object-position: center;
+  /* Art shorter than its window; the leftover height is the travel. Both
+     characters cap at the same fraction so they render the same height. */
+  width: auto; height: auto; max-width: 100%; max-height: 62%; margin: 0;
 }
 .row--thieves .row__media--character img { filter: url(#char-outline-green); }
 .row--guards  .row__media--character img { filter: url(#char-outline-orange); }
@@ -315,13 +315,13 @@ body {
      character rides top → bottom as you scroll. Both scale with the viewport. */
   .row__media--character {
     aspect-ratio: auto; padding: 0;
-    height: min(52vh, 84vw);
+    height: min(42vh, 68vw);
   }
   .row__media--character img {
     width: auto; height: auto; max-width: 100%;
     /* Art capped by both viewport height and width so it stays a sensible size on
        any small screen instead of dominating it — no fixed breakpoints. */
-    max-height: min(40vh, 64vw); margin: 0;
+    max-height: min(28vh, 45vw); margin: 0;
   }
 }
 
